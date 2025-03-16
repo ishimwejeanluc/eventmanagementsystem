@@ -6,9 +6,11 @@ import org.hibernate.Transaction;
 import jakarta.persistence.Query;
 import modal.Invitation;
 import modal.InvitationStatus;
+import modal.User;
 import util.HibernateUtil;
 
 public class InvitationDao {
+	Session session = HibernateUtil.getSession().openSession();
 
     // Send an invitation
     public String sendInvitation(Invitation invitation) {
@@ -76,4 +78,19 @@ public class InvitationDao {
             return "Error updating status";
         }
     }
+    public List<Invitation> getAllInvitationsForEvent(int eventId) {
+        String hql = "FROM Invitation WHERE event.id = :eventId";
+        return session.createQuery(hql, Invitation.class)
+                      .setParameter("eventId", eventId)
+                      .list();
+    }
+    
+    public List<User> getAllGuestsForEvent(int eventId) {
+        String hql = "SELECT i.guest FROM Invitation i WHERE i.event.id = :eventId";
+        return session.createQuery(hql, User.class)
+                      .setParameter("eventId", eventId)
+                      .list();
+    }
+
+
 }

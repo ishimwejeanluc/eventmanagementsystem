@@ -5,6 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	ConnectionTest.class,
+	DataInsertionTest.class,
     CheckInGuestTest.class,
     GetAttendeesByEventTest.class,
     CreateEventTest.class,
@@ -16,7 +18,8 @@ import org.junit.runners.Suite;
     UpdateInvitationStatusTest.class,
     SaveUserTest.class,
     GetUserByIdTest.class,
-    GetAllUsersTest.class
+    GetAllUsersTest.class,
+    OtherFeaturesTest.class
 })
 public class AllTestsSuite {
 }

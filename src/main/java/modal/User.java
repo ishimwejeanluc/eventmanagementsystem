@@ -20,7 +20,8 @@ public class User {
     // Getters and Setters
     public User() {}
 
-    public User(String name, String email, Role role) {
+    public User(int id,String name, String email, Role role) {
+    	this.id = id;
         this.name = name;
         this.email = email;
         this.role = role;
